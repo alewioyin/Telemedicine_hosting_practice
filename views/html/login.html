@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeleMedi - Login</title>
+    <link rel="shortcut icon" href="../img/Head-Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/register.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="opacity"></div>
+
+    <div class="notifyContainer">
+        <div id="successNotification">
+            <img src="../img/icon-success-check.svg" alt="">
+            <p class="successFormMessage"></p>
+        </div>
+
+        <div id="errorNotification">
+            <img src="../img/icon-error-check.svg" alt="">
+            <p class="errorFormMessage"></p>
+        </div>
+    </div>
+    
+
+    <div class="loginContainer">
+        <div class="illustration">
+            <img src="../img/illustration.png" alt="illustration" id="illustration">
+        </div>
+        
+       
+        <div class="leftSide">
+            <img src="../img/Head-Logo.png" alt="Logo" id="logo">
+            <h2>Your Health, <br> Our Top Priority</h2>
+            <p>Connect with top doctors and receive personalized care from the comfort of your home. We provide the best healthcare services.</p>   
+        </div>
+
+        <div class="formContainer">
+            <div class="directions">
+                <a href="../index.html" class="home">Back to Home</a>
+                <div class="loginDirection">
+                    <p>Don't have an account yet?</p>
+                    <a href="./register.html" id="loginBtn">Sign Up</a> 
+                </div>
+                
+            </div>
+            
+            <form id="loginForm">
+                <h1 class="header">Welcome Back!</h1>
+                <p>Select your role to login into your account</p>
+
+                
+                <div class="role-tabs">
+                    <button type="button" class="role-tab active" data-role="patient" id="patientRoleBtn">Patient</button>
+                    <button type="button" class="role-tab" data-role="doctor" id="doctorRoleBtn">Doctor</button>
+                    <button type="button" class="role-tab" data-role="admin" id="adminRoleBtn">Admin</button>
+                </div>
+             
+
+                <input type="hidden" name="role" id="user-role" value="patient">
+
+                <div id="patientForm">
+                    <div class="details">
+                        <label>Email Address <span>*</span></label>
+                        <input type="text" name="patientEmail" id="patientEmail" placeholder="Email address">
+                        <span class="message patientEmailMsg"></span>
+                    </div>
+        
+                    <div class="details">
+                        <label>Password <span>*</span></label>
+                        <div class="loginPasswordContainer">
+                            <input type="password" name="patientPassword" id="patientPassword" placeholder="Password">
+                            <i class='bx bx-show hide-show' data-toggle="#patientPassword"></i>
+                        </div>
+                        <span class="message patientPasswordMsg"></span>
+                    </div>
+    
+                    <button type="button" id="patientLoginBtn" onclick="loginPatient()">Login</button>
+                </div>
+
+
+                <!-- DOCTOR INPUT FIELD -->
+                <div id="doctorForm">
+                    <div class="details">
+                        <label> Email Address <span>*</span></label>
+                        <input type="text" name="doctorEmail" id="doctorEmail" placeholder="Email address">
+                        <span class="message doctorEmailMsg"></span>
+                    </div>
+
+                    <div class="details">
+                        <label> Password <span>*</span></label> 
+                        <div class="loginPasswordContainer loginDocPasswordContainer">
+                            <input type="password" name="doctorPassword" id="doctorPassword" placeholder="Password">
+                            <i class='bx bx-show hide-show' data-toggle="#doctorPassword"></i>
+                        </div>
+                        <span class="message doctorPasswordMsg"></span>
+                    </div>
+                    <button type="button" id="doctorloginBtn" onclick="doctorLogin()">Login</button>
+                </div>
+
+                <!-- ADMIN INPUT FIELD -->
+                 <div id="adminForm">
+                    <div class="details">
+                        <label> Username <span>*</span></label>
+                        <input type="text" name="username" id="username" placeholder="Username">
+                        <span class="message adminUsernameMsg"></span>
+                    </div>
+
+                    <div class="details">
+                        <label> Password <span>*</span></label> 
+                        <div class="loginPasswordContainer adminPasswordContainer">
+                            <input type="password" name="adminPassword" id="adminPassword" placeholder="Password">
+                            <i class='bx bx-show hide-show' data-toggle="#adminPassword"></i>
+                        </div>
+                        <span class="message adminPasswordMsg"></span>
+                    </div>
+                    <button type="button" id="adminLoginBtn" onclick="adminLogin()">Login</button>
+                 </div> 
+            </form>
+        </div>    
+    </div>
+
+    <script src="../js/login.js"></script>
+</body>
+</html>

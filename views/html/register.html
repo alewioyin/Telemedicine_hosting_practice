@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeleMedi - Registration</title>
+    <link rel="stylesheet" href="../css/register.css">
+    <link rel="shortcut icon" href="/views/img/Head-Logo.png" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="opacity"></div>
+
+    <div class="notifyContainer">
+        <div id="successNotification">
+            <img src="../img/icon-success-check.svg" alt="">
+            <p class="successFormMessage"></p>
+        </div>
+
+        <div id="errorNotification">
+            <img src="../img/icon-error-check.svg" alt="">
+            <p class="errorFormMessage"></p>
+        </div>
+    </div>
+    
+
+    <div class="registerContainer">
+        <div class="illustration">
+            <img src="../img/illustration.png" alt="illustration" id="illustration">
+        </div>
+        
+       
+        <div class="leftSide">
+            <img src="../img/Head-Logo.png" alt="Logo" id="logo">
+            <h2>Your Health, <br> Our Top Priority</h2>
+            <p>Connect with top doctors and receive personalized care from the comfort of your home. We provide the best healthcare services.</p>   
+        </div>
+
+        <div class="formContainer">
+            <div class="directions">
+                <a href="../index.html" class="home">Back to Home</a>
+                <div class="loginDirection">
+                    <p>Already have an account?</p>
+                    <a href="./login.html" id="loginBtn">Login</a> 
+                </div>
+                
+            </div>
+            
+            <form id="registrationForm">
+                <h1 class="header">Welcome!</h1>
+                <p>Select your role to create an account</p>
+
+                
+                <div class="role-tabs">
+                        <button type="button" class="role-tab active" data-role="patient" id="patientRegBtn">Patient</button>
+                        <button type="button" class="role-tab" data-role="doctor" id="doctorRegBtn">Doctor</button>
+                        <button type="button" class="role-tab" data-role="admin" id="adminRegBtn">Admin</button>
+                </div>
+
+                <input type="hidden" name="role" id="user-role" value="patient">
+
+                <!-- PATIENT REGISTRATION START -->
+                <div id="patientForm">
+                    <div class="name">
+                        <div class="details">
+                            <label>First Name <span>*</span></label>
+                            <input type="text" name="first_name" id="first_name" placeholder="First name">
+                            <span class="message fNameMessage"></span>
+                        </div>
+    
+                        <div class="details">
+                            <label>Last Name <span>*</span></label>
+                            <input type="text" name="last_name" id="last_name" placeholder="Last name">
+                            <span class="message lNameMessage"></span>
+                        </div>
+                    </div>
+    
+                    <div class="emaiilPhone">
+                        <div class="details">
+                            <label>Email Address <span>*</span></label>
+                            <input type="text" name="email" id="email" placeholder="Email address">
+                            <span class="message emailMessage"></span>
+                        </div>
+        
+                        <div class="details">
+                            <label>Phone Number <span>*</span></label>
+                            <input type="tel" name="phone" id="phone" placeholder="Phone number">
+                            <span class="message phoneMessage"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="password">
+                        <div class="details">
+                            <label>Password <span>*</span></label>
+                            <div class="registerPasswordContainer">
+                                <input type="password" name="password" id="password"  class="passwordInputs" placeholder="Password"> 
+                                <i class='bx bx-show hide-show' data-toggle="#password"></i>
+                            </div>
+                            
+                            <span class="message passwordMessage"></span>
+                        </div>
+    
+                        <div class="details">
+                            <label>Confirm Password <span>*</span></label>
+                            <div class="registerCPasswordContainer registerPasswordContainer">
+                                <input type="password" name="cPassword" id="cPassword" class="passwordInputs" placeholder="Confirm password">
+                                <i class='bx bx-show hide-show' data-toggle="#cPassword"></i>
+                            </div>
+                            
+                            <span class="message cpMessage"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="birthGender">
+                        <div class="details">
+                            <label>Date Of Birth <span>*</span></label>
+                            <input type="date" name="date_of_birth" id="date_of_birth" placeholder="Date of birth">
+                            <span class="message dobMessage"></span>
+                        </div>
+    
+                        <div class="details">
+                            <label> Gender <span>*</span></label>
+                            <select name="gender" id="gender">
+                                <option value="">Select gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span class="message genderMessage"></span>
+                        </div>
+                    </div>
+                    
+                    <div  class="details">
+                        <label>Address <span>*</span></label>
+                        <textarea name="address" id="address" placeholder="Enter address"></textarea>
+                        <span class="message addressMessage"></span>
+                    </div>
+    
+                    <div class="detail-check">
+                        <input type="checkbox" id="checkbox">
+                        <label id="check">By clicking, you agree to the <a href="">Terms</a> and <a href="">Conditions</a><span>*</span></label>        
+                    </div>
+                    <span class="message acceptTermMessage"></span>
+    
+                    <button type="button" id="patientRegisterBtn" onclick="registerPatient()">Register</button>
+                </div>
+                <!-- PATIENT REGISTRATION END -->
+
+                <!-- DOCTOR REGISTRATION START -->
+                 <div id="doctorForm">
+                    <div class="details">
+                        <label>Email Address <span>*</span></label>
+                        <input type="text" name="doctorEmail" id="doctorEmail" placeholder="Email address">
+                        <span class="message doctorEmailMsg"></span>
+                    </div>
+
+                    <div class="details">
+                        <label>Password <span>*</span></label>
+                        <div class="registerPasswordContainer registerDocPasswordContainer">
+                            <input type="password" name="doctorPassword" id="doctorPassword" placeholder="Enter password">
+                            <i class='bx bx-show hide-show' data-toggle="#doctorPassword"></i>
+                        </div>
+                        <span class="message doctorPasswordMsg"></span>
+                    </div>
+
+                    <div class="details">
+                        <label>Confirm Password <span>*</span></label>
+                        <div class="registerPasswordContainer registerDocCPasswordContainer">
+                            <input type="password" name="doctorcPassword" id="doctorcPassword" placeholder="Confirm password">
+                            <i class='bx bx-show hide-show' data-toggle="#doctorcPassword"></i>
+                        </div>
+                        <span class="message doctorcPasswordMsg"></span>
+                    </div>
+
+                    <button type="button" id="doctorRegistrationBtn" onclick="registerDoctor()">Register</button>
+                 </div>
+                <!-- DOCTOR REGISTRATION END -->
+
+                <!-- ADMIN REGISTRATION START -->
+                 <div id="adminForm">
+                    <div class="details">
+                        <label> Username <span>*</span></label>
+                        <input type="text" name="username" id="username" placeholder="Username">
+                        <span class="message usernameMessage"></span>
+                    </div>
+
+                    <div class="details">
+                        <label> Password <span>*</span></label> 
+                        <div class="registerPasswordContainer registerAdminPasswordContainer">
+                            <input type="password" name="password_hash" id="password_hash" placeholder="Enter password">
+                            <i class='bx bx-show hide-show' data-toggle="#password_hash"></i>
+                        </div>
+                        <span class="message adminPasswordMessage"></span>
+                    </div>
+
+                    <div class="details">
+                        <label>Confirm Password <span>*</span></label>
+                        <div class="registerPasswordContainer registerAdminCPasswordContainer">
+                            <input type="password" name="cPassword" id="adminCpassword" placeholder="Confirm password">
+                            <i class='bx bx-show hide-show' data-toggle="#adminCpassword"></i>
+                        </div>
+                        <span class="message admincpMessage"></span>
+                    </div>
+             
+                    <div class="details">
+                        <label> Role <span>*</span></label>
+                        <select name="role" id="role" disabled>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <button type="button" id="adminRegisterBtn" onclick="adminRegistration()">Register</button>
+                </div> 
+                <!-- ADMIN REGISTRATION ENDS -->
+            </form>
+        </div>    
+    </div>
+
+    <script src="../js/register.js"></script>
+</body>
+</html>
