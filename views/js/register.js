@@ -1,3 +1,5 @@
+import { hosting_URL } from "./config";
+
 // ADMIN AND PATIENT REGISTRATION FORM SWITCHING
 const patientForm = document.getElementById('patientForm');
 const doctorForm = document.getElementById('doctorForm');
@@ -204,7 +206,7 @@ document.querySelectorAll('.role-tab').forEach(tab => {
     //check validation
     if (isValid) {
         // send the data to server
-        const response = await fetch('/telemedicine/api/patients/register', {
+        const response = await fetch(`${hosting_URL}/patients/register`, {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json'
@@ -333,7 +335,7 @@ async function registerDoctor() {
 
 
     if (isValid) {
-        const response = await fetch('/telemedicine/api/doctors/register', {
+        const response = await fetch(`${hosting_URL}/doctors/register`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -462,7 +464,7 @@ async function adminRegistration() {
    
 
     if (isValid) {
-        const response = await fetch('/telemedicine/api/admin/register', {
+        const response = await fetch(`${hosting_URL}/admin/register`, {
             method: "POST",
             headers:  {
                 'Content-Type': 'application/json'

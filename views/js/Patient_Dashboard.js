@@ -1,3 +1,5 @@
+import { hosting_URL } from "./config";
+
 
 const bookAppointment = document.querySelector('.bookAppointments');
 const bookSpecificDoctorAppointment = document.querySelector('.bookSpecificDoctorAppointments');
@@ -152,7 +154,7 @@ function profileContentNav() {
     document.addEventListener('DOMContentLoaded', getNotification);  
     async function getNotification() {
         try {
-            const response = await fetch('/telemedicine/api/notifications/patientNotifications', {
+            const response = await fetch(`${hosting_URL}/notifications/patientNotifications`, {
                 method: 'GET',
         });
         
@@ -189,7 +191,7 @@ function profileContentNav() {
     //MARK ALL AS READ BUTTON FUNCTION
     notificationBtn.addEventListener('click', async () => {
         try {
-            const response = await fetch('/telemedicine/api/notifications/markAllAsRead', {
+            const response = await fetch('${hosting_URL}/notifications/markAllAsRead', {
                 method: 'PUT',
             });
             
@@ -239,7 +241,7 @@ function profileContentNav() {
             formData.append('profile_picture', fileInput)
 
             try {
-                const response = await fetch('/telemedicine/api/patients/uploadProfilePicture', {
+                const response = await fetch('${hosting_URL}/patients/uploadProfilePicture', {
                     method: 'POST',
                     body: formData,
                 })
@@ -296,7 +298,7 @@ function profileContentNav() {
         const searchQuery = document.getElementById('search').value.trim();
 
         try {
-            const response = await fetch(`/telemedicine/api/patients/searchDashboard?searchQuery=${encodeURIComponent(searchQuery)}`, {
+            const response = await fetch(`${hosting_URL}/patients/searchDashboard?searchQuery=${encodeURIComponent(searchQuery)}`, {
                 method: 'GET',
             })
         
@@ -388,7 +390,7 @@ function profileContentNav() {
         const patientName = document.querySelectorAll('.patientName');
         const dropdownprofileName = document.querySelector('#profileName');
         async function getPatient() {
-            const response = await fetch('/telemedicine/api/patients/individual', {
+            const response = await fetch('${hosting_URL}/patients/individual', {
                 method: 'GET'
             })
 
@@ -513,7 +515,7 @@ function profileContentNav() {
 
             if (isValid) {
                 try {
-                    const response = await fetch(`/telemedicine/api/patients/individual/update`, {
+                    const response = await fetch(`${hosting_URL}/patients/individual/update`, {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json'},
                         body: JSON.stringify({ first_name: updateFirstName, last_name: updateLastName, phone: updatePhoneNumber, date_of_birth: updateDOB, gender: updateGender, address: updateAddress })
@@ -608,7 +610,7 @@ function profileContentNav() {
 
             if (isValid) {
                 try {
-                    const response = await fetch('/telemedicine/api/patients/individual/changePassword', {
+                    const response = await fetch('${hosting_URL}/patients/individual/changePassword', {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json'},
                         body: JSON.stringify({ currentPassword: currentPassword, newPassword: newPassword})
@@ -723,7 +725,7 @@ function profileContentNav() {
         };
 
         if (isValid) {
-            const response = await fetch('/telemedicine/api/appointments/bookAppointment', {
+            const response = await fetch('${hosting_URL}/appointments/bookAppointment', {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
@@ -762,7 +764,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function getDoctor() {
         const doctorInput = document.getElementById('doctorName');
         try {
-            const response = await fetch('/telemedicine/api/doctors/allDoctors', {
+            const response = await fetch('${hosting_URL}/doctors/allDoctors', {
                 method: "GET"
             });
 
@@ -814,7 +816,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function fetchAppointmentHistory() {
     try {
-        const response = await fetch('/telemedicine/api/appointments/appointmentHistory/patient', {
+        const response = await fetch('${hosting_URL}/appointments/appointmentHistory/patient', {
             method: 'GET',
         });
     
@@ -912,7 +914,7 @@ async function fetchAppointmentHistory() {
 
 async function deleteAppointment(appointmentId) {
     try {
-        const response = await fetch(`/telemedicine/api/appointments/deleteAppointment/${appointmentId}`, {
+        const response = await fetch(`${hosting_URL}/appointments/deleteAppointment/${appointmentId}`, {
             method: 'DELETE',
         });
 
@@ -993,7 +995,7 @@ document.addEventListener('DOMContentLoaded', async ( ) => {
 
             if (isValid) {
                 try {
-                    const response = await fetch(`/telemedicine/api/appointments/rescheduleAppointment/patient`, {
+                    const response = await fetch(`${hosting_URL}/appointments/rescheduleAppointment/patient`, {
                         method: 'PUT',
                         headers: {'Content-Type': 'application/json'}, 
                         body: JSON.stringify({ 
@@ -1040,7 +1042,7 @@ document.addEventListener('DOMContentLoaded', async ( ) => {
 //FETCH UPCOMING APPOINTMENT
     async function fetchAppointment()  {
         try {
-            const response = await fetch(`/telemedicine/api/appointments/upcomingAppointment/patient`, {
+            const response = await fetch(`${hosting_URL}/appointments/upcomingAppointment/patient`, {
                 method: 'GET',
             });
 
@@ -1120,7 +1122,7 @@ document.addEventListener('DOMContentLoaded', async ( ) => {
 //OPEN RESCHHEDULE FORM
     async function openRescheduleForm(appointmentId){
         try {
-            const response = await fetch(`/telemedicine/api/appointments/rescheduleAppointment/patient/${appointmentId}`, {
+            const response = await fetch(`${hosting_URL}/appointments/rescheduleAppointment/patient/${appointmentId}`, {
                 method: 'GET',
             });
 
@@ -1150,7 +1152,7 @@ document.addEventListener('DOMContentLoaded', async ( ) => {
 //CANCEL APPOINTMENT
     async function cancelAppointment(appointmentId) {
         try {
-            const response = await fetch(`/telemedicine/api/appointments/cancelAppointment/${appointmentId}`, {
+            const response = await fetch(`${hosting_URL}/appointments/cancelAppointment/${appointmentId}`, {
                 method: 'PUT',
             });
         
@@ -1203,7 +1205,7 @@ document.addEventListener('DOMContentLoaded', async ( ) => {
     document.addEventListener('DOMContentLoaded', async () => {
         async function fetchAvailableDoctor() {
             try {
-                const response = await fetch('/telemedicine/api/doctors/getAvailableDoctors', {
+                const response = await fetch('${hosting_URL}/doctors/getAvailableDoctors', {
                     method: 'GET',
                 })
         
@@ -1253,7 +1255,7 @@ document.addEventListener('DOMContentLoaded', async ( ) => {
 
         async function openSpecificDoctorForm(doctorId) {
                 try {
-                    const response = await fetch(`/telemedicine/api/doctors/populateSpecificDoctor/${doctorId}`,{
+                    const response = await fetch(`${hosting_URL}/doctors/populateSpecificDoctor/${doctorId}`,{
                         method: 'GET',
                     })
 
@@ -1285,7 +1287,7 @@ document.addEventListener('DOMContentLoaded', async ( ) => {
             const showAllDoctors = document.querySelector('.showAllDoctors');
 
             try {
-                const response = await fetch('/telemedicine/api/doctors/allDoctors', {
+                const response = await fetch('${hosting_URL}/doctors/allDoctors', {
                     method: "GET"
                 });
 
@@ -1362,7 +1364,7 @@ document.addEventListener('DOMContentLoaded', async ( ) => {
 
                 if (isValid) {
                     try {
-                        const response = await fetch('/telemedicine/api/appointments/bookAppointment', {
+                        const response = await fetch('${hosting_URL}/appointments/bookAppointment', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -1411,7 +1413,7 @@ document.addEventListener('DOMContentLoaded', async ( ) => {
             const searchDoctorValue = searchDoctorInput.value;
 
             try {
-                const response = await fetch(`/telemedicine/api/doctors/searchDoctor?searchDoctor=${encodeURIComponent(searchDoctorValue)}`, {
+                const response = await fetch(`${hosting_URL}/doctors/searchDoctor?searchDoctor=${encodeURIComponent(searchDoctorValue)}`, {
                     method: 'GET',
                 });
         
@@ -1713,7 +1715,7 @@ document.addEventListener('DOMContentLoaded', async ( ) => {
 //LOGOUT FUNCTION
     function logOut() { logOutPatient() }
     async function logOutPatient() {
-        const response = await fetch('/telemedicine/api/patients/logout', {
+        const response = await fetch('${hosting_URL}/patients/logout', {
             method: 'GET'
         })
 
@@ -1748,7 +1750,7 @@ document.addEventListener('DOMContentLoaded', async ( ) => {
             deleteConfirmation.style.display = 'none';
 
             try {
-                const response = await fetch('/telemedicine/api/patients/delete', {
+                const response = await fetch('${hosting_URL}/patients/delete', {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
